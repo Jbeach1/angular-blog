@@ -9,15 +9,18 @@
     </div>
     <div class="col-lg-4">
         <div class="row">
-            <img src="{{headerImage}}" class="img">
+            <img src="{{headerImage}}" (error)="setDefaultHeaderImage()" class="img">
         </div>
         <div class="row">
             <div class="col-lg-2">
-                <button type="submit" (click)="deletePost()" class="btn btn-outline-primary">Edit</button>
+                <button type="submit" (click)="editPost()" class="btn btn-outline-primary">Edit</button>
             </div>
             <div class="col-lg-2">
-                <button type="submit" (click)="editPost()" class="btn btn-outline-danger">Delete</button>
+                <button type="submit" (click)="deletePost()" class="btn btn-outline-danger">Delete</button>
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="errorMsg!==''" class="alert alert-danger" role="alert">
+    {{errorMsg}}
 </div>

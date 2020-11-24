@@ -16,7 +16,6 @@ export class PostService {
     if (localStorage.getItem('AuthToken') != null) {
       token = JSON.parse(localStorage.getItem('AuthToken')).token;
     }
-
     const headers = { 'Authorization': 'Bearer ' + token };
     return this.http.post<Post>(`${this.BASE_URL}/Posts`, newPost, { headers: headers });
   }
@@ -24,5 +23,23 @@ export class PostService {
 
   GetPosts() {
     return this.http.get(`${this.BASE_URL}/Posts`);
+  }
+
+  deletePost(postId: string) {
+    let token;
+    if (localStorage.getItem('AuthToken') != null) {
+      token = JSON.parse(localStorage.getItem('AuthToken')).token;
+    }
+    const headers = { 'Authorization': 'Bearer ' + token };
+    return this.http.delete(`${this.BASE_URL}/Posts/${postId}`, { headers: headers })
+  }
+
+  editPost(post: Post, postId: string) {
+    let token;
+    if (localStorage.getItem('AuthToken') != null) {
+      token = JSON.parse(localStorage.getItem('AuthToken')).token;
+    }
+    const headers = { 'Authorization': 'Bearer ' + token };
+    return this.http.patch(`${this.BASE_URL}/Posts/${postId}`, post, { headers: headers });
   }
 }

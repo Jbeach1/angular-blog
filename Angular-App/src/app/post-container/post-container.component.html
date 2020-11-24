@@ -1,9 +1,10 @@
 <div *ngIf="generatedPosts.length >= 1">
     <div *ngFor="let returnedPost of generatedPosts">
         <app-post [title]="returnedPost.title" [content]="returnedPost.content" [userId]="returnedPost.userId"
-            [createdDate]="returnedPost.createdDate" [headerImage]="returnedPost.headerImage">
+            [createdDate]="returnedPost.createdDate" [headerImage]="returnedPost.headerImage"
+            [postId]="returnedPost.postId">
         </app-post>
     </div>
     <div *ngIf="generatedPosts.length < 1" class="alert alert-info" role="alert">
-        No posts found!
+        <p> No posts found! </p>
     </div>
