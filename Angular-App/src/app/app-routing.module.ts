@@ -5,6 +5,7 @@ import { SecretPlaceComponent } from './secret-place/secret-place.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuardService } from './auth/services/auth-guard.service';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
     path: 'secret-place',
     canActivate: [AuthGuardService],
     component: SecretPlaceComponent
+  },
+  {
+    path: 'create-post',
+    canActivate: [AuthGuardService],
+    component: CreatePostComponent
   }
 ];
 

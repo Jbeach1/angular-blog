@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.userSvc.UserLogin(this.userId, this.password).subscribe((returnedToken) => {
       this.authSvc.setUserLoggedIn(returnedToken);
       this.errorMsg = '';
-      this.router.navigate(['/secret-place']);
+      this.router.navigate(['/home']);
     }, (error) => {
       console.log(error);
       this.errorMsg = error.error.messsage;

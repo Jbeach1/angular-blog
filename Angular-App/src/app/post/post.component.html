@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-lg-8">
+        <div class="media-body">
+            <h4 class="media-heading">{{ title }}</h4>
+            <h6 class="media-description">Author: {{ userId }}</h6>
+            <h6> Posted On: {{createdDate}} </h6>
+            <p> {{content}} </p>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <img src="{{headerImage}}" class="img">
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <button type="submit" (click)="deletePost()" class="btn btn-outline-primary">Edit</button>
+            </div>
+            <div class="col-lg-2">
+                <button type="submit" (click)="editPost()" class="btn btn-outline-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { UserService } from './auth/services/user.service';
 import { LoginComponent } from './auth/login/login.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { PostContainerComponent } from './post-container/post-container.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { LoginComponent } from './auth/login/login.component';
     SecretPlaceComponent,
     HomeComponent,
     LoginComponent,
+    CreatePostComponent,
+    PostContainerComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     UserService,
