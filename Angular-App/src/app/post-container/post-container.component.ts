@@ -16,6 +16,7 @@ export class PostContainerComponent implements OnInit {
 
   constructor(private postSvc: PostService, private authSvc: AuthGuardService, private router: Router) { }
   errorMsg = '';
+  posts = false;
   postsArr: [];
   generatedPosts: ReturnedPost[] = [];
   ngOnInit(): void {
@@ -27,6 +28,11 @@ export class PostContainerComponent implements OnInit {
       this.errorMsg = '';
       this.postsArr = alasql('SELECT * FROM ? ORDER BY lastUpdated desc', [returnedPosts]);
       this.generatePosts();
+      if (this.generatedPosts.length < 1) {
+        this.posts = false;
+      } else {
+        this.posts = true;
+      }
     }, (error) => {
       this.errorMsg = error.error.messsage;
     })
@@ -34,16 +40,16 @@ export class PostContainerComponent implements OnInit {
 
   generatePosts() {
     this.postsArr.forEach(element => {
-      let temp = new ReturnedPost();
-      temp.postId = element['postId'];
-      temp.createdDate = element['createdDate'];
-      temp.createdDate = temp.createdDate.substring(0, 10);
-      temp.title = element['title'];
-      temp.content = element['content'];
-      temp.userId = element['userId'];
-      temp.headerImage = element['headerImage'];
-      temp.lastUpdated = element['lastUpdated'];
-      this.generatedPosts.push(temp);
+      let post = new ReturnedPost();
+      post.postId = element['postId'];
+      post.createdDate = element['createdDate'];
+      post.createdDate = post.createdDate.substring(0, 10);
+      post.title = element['title'];
+      post.content = element['content'];
+      post.userId = element['userId'];
+      post.headerImage = element['headerImage'];
+      post.lastUpdated = element['lastUpdated'];
+      this.generatedPosts.push(post);
     });
   }
 }
